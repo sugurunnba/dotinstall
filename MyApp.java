@@ -20,7 +20,7 @@ public class MyApp {
     // String msg = score > 80 ? "Great" : "so so...!";
       // score > 80の時、trueなら"Great", falseなら"so so...!"
     // System.out.println(msg);
-    
+
     // switch
     // String signal = "green";
     // switch(signal){
@@ -38,7 +38,7 @@ public class MyApp {
     //     System.out.println("wrong signal!");
     //     break;
     // }
-    
+
     // while
     // int i = 0;
     // while(i < 10){
@@ -51,9 +51,68 @@ public class MyApp {
   //     i++;
   //   } while(i < 10);
   // }
+
+    // for
+    // for(int i = 0; i < 10; i++){
+    //   if( i == 5){
+    //     // break; そこで表示を止める
+    //     continue; //該当の結果のみスキップする
+    //   }
+    //   System.out.println(i);
+    // }
+
+    // 配列
+    // int[] sales = new int[3];
+    // // → int[] sales = new int[] {100, 200, 300}; 同じ意味
+    // // → int[] sales = {100, 200, 300}; 同じ意味
+    // sales[0] = 100;
+    // sales[1] = 200;
+    // sales[2] = 300;
+    // System.out.println(sales[1]);
+    // sales[1] = 1000;
+    // System.out.println(sales[1]);
+
+    // 配列2
+    // int[] sales = {700, 400, 200};
+    // // for(int i = 0; i < 3; i++){
+    // // →for(int i = 0; i < sales.length; i++){
+    // //   System.out.println(sales[i]);
+    // // }
+    // for(int sale : sales){
+    //   System.out.println(sale);
+    // }
+
+    // 基本データ型と参照型
+    // ①
+    // int x = 10;
+    // int y = x;
+    // y = 5;
+    // System.out.println(x); //10が表示される
+    // System.out.println(y); //5が表示される
+    // ②
+    // int[] a = {3, 5, 7}; //intの配列は参照型なので、{3,5,7}を保存しているデータの番地情報がaに入る
+    // int[] b = a; //同じく参照型なので、データの番地情報をaと同じ番地情報を保存している
+    // b[1] = 8; //番地先の情報を書き換えるので、a,bが呼び出す元データが変更されて、下記の通りになる。
+    // System.out.println(a[1]); //8が表示される(元データを8に修正しているので5は表示されない)
+    // System.out.println(b[1]); //8が表示される
+    // ③
+    // String s = "hello"; //Stringは参照型なので、"hello"を保存しているデータの番地情報がsに入る
+    // String t = s;
+    // t = "world"; //Stringの元データを修正することはできず、新しい番地情報にデータ(world)が入る仕組み
+    // //なので、②のように元データが修正されることはないので、"hello world"と表示される
+    // System.out.println(s); //hello
+    // System.out.println(t); //world
+
+    //
+
+  }
 }
 // System.out.println();
 // コンパイル
 // javac MyApp.java
 // 実行
 // java MyApp
+// 拡大
+// シフト＋コマンド＋=
+// 縮小
+// コマンド＋=
