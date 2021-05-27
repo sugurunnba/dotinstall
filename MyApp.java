@@ -1,5 +1,5 @@
-public class MyApp {
-  public static void main(String[] args){
+// public class MyApp {
+//   public static void main(String[] args){
     // char a = 'a';  // 文字
     // int x = 10;  // 整数 byte short int long
     // long y = 5555555555L;  // longを使用するときは、末尾にL(l)をつける
@@ -102,11 +102,98 @@ public class MyApp {
     // //なので、②のように元データが修正されることはないので、"hello world"と表示される
     // System.out.println(s); //hello
     // System.out.println(t); //world
+//     }
+//   }
 
-    //
+//method (複数の処理を名前をつけて管理する方法)
+//   public static String sayHi(String name){
+//     // →voidは返り値がない時に使用する
+//     return "Hi!" + name;
+//   }
+//   // オーバーロード
+//   public static void sayHi(){
+//     System.out.println("Hi! Nobody!");
+//   }
+//   public static void main(String[] args){
+//     // sayHi();
+//     String msg = sayHi("runba!");//←引数
+//     System.out.println(msg);
+//     sayHi();
+//  }
+// }
 
+// class User {
+//   String name;//クラスに属する変数は「フィールド」と呼ばれる
+//   // コンストラクタ(クラスがインスタンス化される時に必ず呼び出されるメソッド)
+//   User(String name){ //コンストラクタ名はクラス名と同じ
+//     this.name = name;
+//   }
+//   // コンストラクタのオーバーロード(引数なし)
+//   User() {
+//     this.name = "Me!";
+//     // this()について →クラス内にある別コンストラクタへデータを渡してあげる
+//     // → this("Mi!!"); とすれば、該当する引数のコンストラクタ(128行目)に"Mi"を渡す。結果的にthis.name(129行目)に"Mi!"が渡されるので、148行目のように記述しても"Mi"というデータが入った状態で表示されることになる
+//   }
+//   void sayHi(){
+//     System.out.println("hi!" + this.name);
+//   }
+// }
+// public class MyApp {
+//   public static void main(String[] args){
+//     User tom; //クラスは参照型なので、この時点ではメモリ領域にデータが生み出されていない
+//     User runba;
+//     // tom = new User("tom"); //newとしてUserクラスからインスタンスを作成することで、メモリ領域にデータが保存される
+//     // ※tomにはUserインスタンスの番地情報が入っている(参照型)
+//     tom = new User("tom");
+//     runba = new User();
+//     System.out.println(tom.name); //←引数ありのコンストラクタを使用
+//     System.out.println(runba.name); //←引数なしのコンストラクタを使用
+//     tom.sayHi();
+//     runba.sayHi();
+//   }
+// }
+
+// クラスの継承について(lesson20~)
+class User{ //親クラスorスーパークラス
+  String name;
+  User(String name){
+    this.name = name;
+  }
+  User(){
+    this.name = "Mi!";
+  }
+  void sayHi(){
+    System.out.println("hi! " + this.name);
   }
 }
+// 継承することで、親クラスのフィールドやメソッドを使用できる
+class AdminUser extends User {  //子クラスorサブクラス
+  AdminUser(String name){  //子クラスがコンストラクタを作成すると、自動的に親クラスのコンストラクタを呼び出すようになっている
+    super(name);  //親クラスのコンストラクタに記載している内容をsuper(引数があれば入れる)で持ってくることができる
+  }
+  // メソッドのオーバーライド (親クラスのメソッドを子クラスにて上書き)
+  @Override //アノテーション(オーバーライド状態を明示的にしている。またオーバーライドする際にメソッド名を間違えて記入してしまった場合には、エラーを出してくれる)
+  void sayHi(){
+    System.out.println("[admin] hi! " + this.name);
+  }
+  void sayHello() {
+    System.out.println("hello! " + this.name);
+  }
+}
+
+public class MyApp {
+  public static void main(String[] args){
+    User tom = new User("tom");;
+    System.out.println(tom.name);
+    tom.sayHi();
+
+    AdminUser bob = new AdminUser("bob");
+    System.out.println(bob.name);
+    bob.sayHi();
+    bob.sayHello();
+  }
+}
+
 // System.out.println();
 // コンパイル
 // javac MyApp.java
